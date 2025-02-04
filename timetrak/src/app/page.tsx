@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabse } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
 
 export default function PomodoroTimer() {
@@ -31,7 +31,7 @@ export default function PomodoroTimer() {
   const logSessionToDatabase = async (studyTime: number) => {
     const date = new Date().toISOString().split("T")[0]; // Get current date (YYYY-MM-DD)
     try {
-      const { error } = await supabse
+      const { error } = await supabase
         .from("study_sessions")
         .insert([
           {
@@ -52,7 +52,7 @@ export default function PomodoroTimer() {
 
   const getSessionsForDay = async (selectedDate: string) => {
     try {
-      const { data, error } = await supabse
+      const { data, error } = await supabase
         .from("study_sessions")
         .select("*")
         .eq("date", selectedDate);
