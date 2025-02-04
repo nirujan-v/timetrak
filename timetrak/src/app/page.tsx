@@ -7,7 +7,9 @@ import { supabase } from "@/lib/supabase";
 export default function PomodoroTimer() {
   // State for the timer
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
+  
   const [isRunning, setIsRunning] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [sessions, setSessions] = useState<any[]>([]); // Store fetched sessions
   const [totalStudyTime, setTotalStudyTime] = useState(0); // Total study time for the selected day
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]); // Default to today's date
