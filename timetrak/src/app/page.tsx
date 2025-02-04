@@ -32,6 +32,8 @@ export default function PomodoroTimer() {
 
   const logSessionToDatabase = async (studyTime: number) => {
     const date = new Date().toISOString().split("T")[0]; // Get current date (YYYY-MM-DD)
+    
+    console.log(date);
     try {
       const { error } = await supabase
         .from("study_sessions")
@@ -46,6 +48,8 @@ export default function PomodoroTimer() {
         console.error("Error saving study session:", error);
       } else {
         console.log("Study session logged successfully!");
+        console.log("hello");
+        
       }
     } catch (error) {
       console.error("Unexpected error:", error);
