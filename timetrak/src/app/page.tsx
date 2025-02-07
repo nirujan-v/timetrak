@@ -86,6 +86,7 @@ export default function PomodoroTimer() {
 
   // Timer countdown logic
   useEffect(() => {
+    document.title = `⏳ ${formatTime(timeLeft)} - Pomodoro Timer`
     getSessionsForDay(date);
     if (isRunning && timeLeft > 0) {
       const timer = setInterval(() => {
