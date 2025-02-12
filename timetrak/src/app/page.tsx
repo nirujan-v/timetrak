@@ -31,7 +31,7 @@ export default function PomodoroTimer() {
   };
 
   const logSessionToDatabase = async (studyTime: number) => {
-    const date = new Date().toISOString().split("T")[0]; // Get current date (YYYY-MM-DD)
+    const date = new Date().toISOString().split("en-CA")[0]; // Get current date (YYYY-MM-DD)
     
     console.log(date);
     try {
