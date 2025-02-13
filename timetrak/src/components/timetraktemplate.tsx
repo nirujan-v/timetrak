@@ -3,13 +3,7 @@ import { Body, Container, Html, Tailwind } from "@react-email/components";
 import * as React from "react";
 
 
-interface Props {
-    content: string;
-}
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
 
 const timeTrakTemplate = ({ firstName }: { firstName: string }) => {
     return(
@@ -26,14 +20,14 @@ const timeTrakTemplate = ({ firstName }: { firstName: string }) => {
                             Hi <span className="font-semibold">{firstName}</span>,
                         </p>
                         <p className="text-base mt-2">
-                            We’re thrilled to have you here! Get ready to dive into our services and explore everything we have to offer.
+                            We&apos;re thrilled to have you here! Get ready to dive into our services and explore everything we have to offer.
                         </p>
                         <p className="text-base mt-2">
-                            If you have any questions, feel free to reach out to our support team at any time. We're here to help you succeed!
+                            If you have any questions, feel free to reach out to our support team at any time. We&apos;re here to help you succeed!
                         </p>
                         <p className="text-base mt-6">
                             Cheers, <br />
-                            The Team at{" "}
+                            The Team at
                             <span className="font-bold">
                             time
                             <span className="text-green-600">Trak</span>
