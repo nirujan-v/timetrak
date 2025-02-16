@@ -35,7 +35,7 @@ export default function PomodoroTimer() {
   // Handle start and pause functionality
   const toggleTimes = (time: number) => {
     
-    setTimeLeft(time);
+    setTimeLeft(time * 60);
     setSessionTime(time);
   };
 
@@ -138,7 +138,7 @@ export default function PomodoroTimer() {
         
 
         <button
-          onClick={() => toggleTimes(20*60)}
+          onClick={() => toggleTimes(20)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
@@ -146,7 +146,7 @@ export default function PomodoroTimer() {
         </button>
 
         <button
-          onClick={() => toggleTimes(30*60)}
+          onClick={() => toggleTimes(30)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
@@ -154,7 +154,7 @@ export default function PomodoroTimer() {
         </button>
 
         <button 
-          onClick={() => toggleTimes(60*60)}
+          onClick={() => toggleTimes(60)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
