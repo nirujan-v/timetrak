@@ -26,6 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html>
+    <head>
+          
+          <meta name="description" content="A time tracking app" />
+          
+        </head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
     <SidebarProvider>
       <AppSidebar/>
@@ -47,12 +53,3 @@ export default function RootLayout({
     
   );
 }
-
-
-{/* <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-</html> */}

@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 export default function PomodoroTimer() {
   
   const [timeLeft, setTimeLeft] = useState(25 * 60); // Current time left on timer
-  const [sessionTime, setSessionTime] = useState(25 * 60); // Current time left on timer
+  const [sessionTime, setSessionTime] = useState(25); // Current time left on timer
   
   const [isRunning, setIsRunning] = useState(false); //check if timer is on
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -97,24 +97,26 @@ export default function PomodoroTimer() {
   useEffect(() => {
 
     //set tab title to current time remaining
-    document.title = `⏳ ${formatTime(timeLeft)} - Pomodoro Timer`
+    document.title = `timeTrak`
 
     //Update sessions for selected day
     getSessionsForDay(date);
 
     //update timer
     if (isRunning && timeLeft > 0) {
+      document.title = `⏳ ${formatTime(timeLeft)} - Pomodoro Timer`
       const timer = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
 
       return () => clearInterval(timer); // Cleanup interval
     } else if (timeLeft === 0 && isRunning) { //if timer hits 0, reset timer and log to database
-      setTimeLeft(25 * 60);
+      logSessionToDatabase(sessionTime);
+      setTimeLeft(30 * 60);
       setIsRunning(false);
       playSound();
       
-      logSessionToDatabase(sessionTime);
+      
       
     }
   }, [isRunning, timeLeft, date, sessionTime]);
@@ -138,7 +140,7 @@ export default function PomodoroTimer() {
         
 
         <button
-          onClick={() => toggleTimes(20)}
+          onClick={() => toggleTimes(1)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
@@ -146,7 +148,7 @@ export default function PomodoroTimer() {
         </button>
 
         <button
-          onClick={() => toggleTimes(30)}
+          onClick={() => toggleTimes(4)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
@@ -154,7 +156,7 @@ export default function PomodoroTimer() {
         </button>
 
         <button 
-          onClick={() => toggleTimes(60)}
+          onClick={() => toggleTimes(5)}
           className={`m-6 px-6 py-2 bg-white text-black rounded-lg font-semibold shadow-md 
           }`}
         >
