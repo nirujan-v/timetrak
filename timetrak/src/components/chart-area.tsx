@@ -30,7 +30,7 @@ const chartConfig = {
     },
   } satisfies ChartConfig;
 
-export function Component() {
+export function StatsChart() {
     const [chartData, setChartData] = useState<{date: string; sessions: number}[]>([]);
 
     useEffect(() => {
@@ -52,6 +52,11 @@ export function Component() {
 
       // Process data to count sessions per day
       const sessionCounts = data.reduce<Record<string, number>>((acc, session) => {
+        acc[session.date] = (acc[session.date] || 0) + 1;
+        return acc;
+      }, {});
+
+      const timeCounts = data.reduce<Record<string, number>>((acc, session) => {
         acc[session.date] = (acc[session.date] || 0) + 1;
         return acc;
       }, {});
