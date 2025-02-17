@@ -56,11 +56,13 @@ export function StatsChart() {
         return acc;
       }, {});
 
+      {/*
+
       const timeCounts = data.reduce<Record<string, number>>((acc, session) => {
         acc[session.date] = (acc[session.date] || 0) + 1;
         return acc;
       }, {});
-
+      */}
       // Format data for chart
       const formattedData = Array.from({ length: 7 }, (_, i) => {
         const date = new Date();
